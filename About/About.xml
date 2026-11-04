@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>[Epis] VFE Insectoids 2 - Quest Infestation Fix</name>
+	<author>Epitaph &amp; Gemini 3.8 Flash</author>
+	<url>n/a</url>
+	<packageId>Epitaph.VFEI2QuestInfestationFix</packageId>
+	<supportedVersions>
+		<li>1.5</li>
+		<li>1.6</li>
+		<li>1.7</li>
+	</supportedVersions>
+	<description>Fixes a bug where Vanilla Infestation Quests (such as 'Pods and Hives' / ThreatReward_Infestation_ItemPod) spawn empty hives without any adult insects when Vanilla Factions Expanded - Insectoids 2 (VFEI2) is installed.
+
+Technical details:
+Vanilla QuestPart_Infestation passes null insectPoints to InfestationUtility.SpawnTunnels (relying on vanilla Hive CompSpawnerPawn). VFEI2 replaces CompSpawnerPawn with CompInsectSpawner (which only spawns on infested world tiles) and delegates insect spawning to TunnelHiveSpawner. Because quest tunnels received null points, zero insects were spawned.
+
+This mod intercepts tunnel spawns with missing insectPoints and dynamically injects the appropriate combat points so VFEI2 immediately spawns the insect defenders and assault swarms.</description>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>brrainz.harmony</li>
+		<li>OskarPotocki.VanillaFactionsExpanded.Core</li>
+		<li>OskarPotocki.VFE.Insectoid2</li>
+	</loadAfter>
+</ModMetaData>
